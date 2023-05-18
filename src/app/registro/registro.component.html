@@ -1,4 +1,4 @@
-<p>registro works!</p>
+<p>Crear usuarios:</p>
     <form (ngSubmit)="createUsuario()" [formGroup]="usuarioForm">
         <div>
             <label for="nombre">Nombre: </label>
@@ -32,6 +32,7 @@
 
   <div *ngIf="message" class="msgerror">{{ message }}</div>
   <div *ngIf="usuario" class="msgok">Usuario creado correctamente: {{ usuario | json }}</div>
+  <h3>DNI de los usuarios de la base de datos:</h3>
   <ul>
     <li *ngFor="let usuario of usuarios$ | async" (mouseover)="ver($event)">{{ usuario.dni }}</li>
   </ul>
