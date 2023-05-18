@@ -1,0 +1,37 @@
+<p>registro works!</p>
+    <form (ngSubmit)="createUsuario()" [formGroup]="usuarioForm">
+        <div>
+            <label for="nombre">Nombre: </label>
+          <input type="text" placeholder="Nombre" formControlName="nombre"/>
+          <span *ngIf="
+              (nombre?.touched || message) &&
+              nombre?.invalid
+            " class="msgerror">{{getErrornombreapellidos()}}</span>
+        </div>
+        <div>
+            <label for="apellidos">Apellidos: </label>
+          <input type="text" placeholder="Apellidos"  formControlName="apellidos" />
+          <span *ngIf="(apellidos?.touched || message) &&
+              apellidos?.invalid
+            " class="msgerror">
+            {{getErrornombreapellidos()}}s
+          </span>
+        </div>
+        <div>
+            <label for="dni">DNI: </label>
+          <input type="text" placeholder="99999999A" formControlName="dni" />
+          <span *ngIf="
+              (dni?.touched || message) &&
+              dni?.invalid
+            " class="msgerror">
+            {{getErrordni()}}
+          </span>
+        </div>
+      <button type="submit" >Create</button>
+    </form>
+
+  <div *ngIf="message" class="msgerror">{{ message }}</div>
+  <div *ngIf="usuario" class="msgok">Usuario creado correctamente: {{ usuario | json }}</div>
+  <ul>
+    <li *ngFor="let usuario of usuarios$ | async" (mouseover)="ver($event)">{{ usuario.dni }}</li>
+  </ul>
